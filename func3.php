@@ -1,6 +1,11 @@
 <?php
 session_start();
-$con=mysqli_connect("localhost","root","","myhmsdb");
+$db_host = getenv('DB_HOST') ?: "localhost";
+$db_user = getenv('DB_USER') ?: "root";
+$db_pass = getenv('DB_PASS') !== false ? getenv('DB_PASS') : "";
+$db_name = getenv('DB_NAME') ?: "myhmsdb";
+$db_port = getenv('DB_PORT') ?: 3306;
+$con = mysqli_connect($db_host, $db_user, $db_pass, $db_name, (int)$db_port);
 if(isset($_POST['adsub'])){
 	$username=$_POST['username1'];
 	$password=$_POST['password2'];
