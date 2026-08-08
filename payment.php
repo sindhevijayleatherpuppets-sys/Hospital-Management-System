@@ -1,7 +1,7 @@
-<!DOCTYPE html>
 <?php
-session_start();
-$con=mysqli_connect("localhost","root","","myhmsdb");
+require_once(__DIR__ . '/db.php');
+?>
+<!DOCTYPE html>
 
 $fname = isset($_SESSION['fname']) ? $_SESSION['fname'] : (isset($_GET['fname']) ? $_GET['fname'] : 'Patient');
 $lname = isset($_SESSION['lname']) ? $_SESSION['lname'] : (isset($_GET['lname']) ? $_GET['lname'] : '');

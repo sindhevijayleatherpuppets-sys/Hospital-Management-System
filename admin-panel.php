@@ -1,8 +1,7 @@
-<!DOCTYPE html>
 <?php 
+require_once(__DIR__ . '/db.php');
 include('func.php');  
 include('newfunc.php');
-$con=mysqli_connect("localhost","root","","myhmsdb");
 
 $pid = isset($_SESSION['pid']) && !empty($_SESSION['pid']) ? $_SESSION['pid'] : 1;
 $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
@@ -11,6 +10,8 @@ $fname = isset($_SESSION['fname']) ? $_SESSION['fname'] : '';
 $gender = isset($_SESSION['gender']) ? $_SESSION['gender'] : '';
 $lname = isset($_SESSION['lname']) ? $_SESSION['lname'] : '';
 $contact = isset($_SESSION['contact']) ? $_SESSION['contact'] : '';
+?>
+<!DOCTYPE html>
 
 if(isset($_POST['app-submit']))
 {

@@ -1,21 +1,5 @@
 <?php
-session_start();
-
-if (file_exists(__DIR__ . '/.env')) {
-    $lines = file(__DIR__ . '/.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    foreach ($lines as $line) {
-        if (strpos(trim($line), '#') === 0 || strpos($line, '=') === false) continue;
-        list($name, $val) = explode('=', $line, 2);
-        putenv(trim($name) . '=' . trim($val));
-    }
-}
-
-$db_host = getenv('DB_HOST') ?: "localhost";
-$db_user = getenv('DB_USER') ?: "root";
-$db_pass = getenv('DB_PASS') !== false ? getenv('DB_PASS') : "";
-$db_name = getenv('DB_NAME') ?: "myhmsdb";
-$db_port = getenv('DB_PORT') ?: 3306;
-$con = mysqli_connect($db_host, $db_user, $db_pass, $db_name, (int)$db_port);
+require_once(__DIR__ . '/db.php');
 if(isset($_POST['patsub1'])){
 	$fname=$_POST['fname'];
   $lname=$_POST['lname'];

@@ -1,8 +1,8 @@
-<!DOCTYPE html>
 <?php 
-$con=mysqli_connect("localhost","root","","myhmsdb");
-
+require_once(__DIR__ . '/db.php');
 include('newfunc.php');
+?>
+<!DOCTYPE html>
 
 if(isset($_POST['docsub']))
 {
@@ -272,7 +272,7 @@ if(isset($_POST['docsub1']))
                 </thead>
                 <tbody>
                   <?php 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    require_once(__DIR__ . '/db.php');
                     global $con;
                     $query = "select * from doctb";
                     $result = mysqli_query($con,$query);
@@ -323,7 +323,7 @@ if(isset($_POST['docsub1']))
                 </thead>
                 <tbody>
                   <?php 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    require_once(__DIR__ . '/db.php');
                     global $con;
                     $query = "select * from patreg";
                     $result = mysqli_query($con,$query);
@@ -379,7 +379,7 @@ if(isset($_POST['docsub1']))
                 </thead>
                 <tbody>
                   <?php 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    require_once(__DIR__ . '/db.php');
                     global $con;
                     $query = "select * from prestb";
                     $result = mysqli_query($con,$query);
@@ -450,8 +450,7 @@ if(isset($_POST['docsub1']))
                 </thead>
                 <tbody>
                   <?php 
-
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    require_once(__DIR__ . '/db.php');
                     global $con;
 
                     $query = "select * from appointmenttb;";
@@ -567,8 +566,7 @@ if(isset($_POST['docsub1']))
                 </thead>
                 <tbody>
                   <?php 
-
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    require_once(__DIR__ . '/db.php');
                     global $con;
 
                     $query = "select * from contact;";
