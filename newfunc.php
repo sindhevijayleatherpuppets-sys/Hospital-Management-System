@@ -1,5 +1,14 @@
 <?php
 // session_start();
+if (file_exists(__DIR__ . '/.env')) {
+    $lines = file(__DIR__ . '/.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0 || strpos($line, '=') === false) continue;
+        list($name, $val) = explode('=', $line, 2);
+        putenv(trim($name) . '=' . trim($val));
+    }
+}
+
 $db_host = getenv('DB_HOST') ?: "localhost";
 $db_user = getenv('DB_USER') ?: "root";
 $db_pass = getenv('DB_PASS') !== false ? getenv('DB_PASS') : "";
