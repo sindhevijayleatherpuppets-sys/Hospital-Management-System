@@ -10,8 +10,6 @@ $fname = isset($_SESSION['fname']) ? $_SESSION['fname'] : '';
 $gender = isset($_SESSION['gender']) ? $_SESSION['gender'] : '';
 $lname = isset($_SESSION['lname']) ? $_SESSION['lname'] : '';
 $contact = isset($_SESSION['contact']) ? $_SESSION['contact'] : '';
-?>
-<!DOCTYPE html>
 
 if(isset($_POST['app-submit']))
 {
@@ -70,6 +68,7 @@ if(isset($_GET['cancel']))
   }
 }
 ?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">

@@ -1,8 +1,6 @@
 <?php 
 require_once(__DIR__ . '/db.php');
 include('newfunc.php');
-?>
-<!DOCTYPE html>
 
 if(isset($_POST['docsub']))
 {
@@ -19,7 +17,6 @@ if(isset($_POST['docsub']))
   }
 }
 
-
 if(isset($_POST['docsub1']))
 {
   $demail=$_POST['demail'];
@@ -33,9 +30,8 @@ if(isset($_POST['docsub1']))
     echo "<script>alert('Unable to delete!');</script>";
   }
 }
-
-
 ?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
 

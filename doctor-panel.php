@@ -2,8 +2,6 @@
 require_once(__DIR__ . '/db.php');
 include('func1.php');
 $doctor = isset($_SESSION['dname']) ? $_SESSION['dname'] : 'Dr. Krishnamoorthy BS';
-?>
-<!DOCTYPE html>
 
 if(isset($_GET['cancel']))
 {
@@ -14,6 +12,7 @@ if(isset($_GET['cancel']))
   }
 }
 ?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
