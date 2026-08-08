@@ -11,6 +11,9 @@ $gender = isset($_SESSION['gender']) ? $_SESSION['gender'] : '';
 $lname = isset($_SESSION['lname']) ? $_SESSION['lname'] : '';
 $contact = isset($_SESSION['contact']) ? $_SESSION['contact'] : '';
 
+$alert_msg = '';
+$alert_type = 'info';
+
 if(isset($_POST['app-submit']))
 {
   $pid = isset($_SESSION['pid']) && !empty($_SESSION['pid']) ? $_SESSION['pid'] : 1;
@@ -40,22 +43,27 @@ if(isset($_POST['app-submit']))
 
           if($query)
           {
-            echo "<script>alert('Your appointment successfully booked');</script>";
+            $alert_msg = "Your appointment was successfully booked!";
+            $alert_type = "success";
           }
           else{
-            echo "<script>alert('Unable to process your request. Please try again!');</script>";
+            $alert_msg = "Unable to process your request. Please try again!";
+            $alert_type = "danger";
           }
       }
       else{
-        echo "<script>alert('We are sorry to inform that the doctor is not available in this time or date. Please choose different time or date!');</script>";
+        $alert_msg = "We are sorry to inform that the doctor is not available at this time or date. Please choose a different time or date!";
+        $alert_type = "warning";
       }
     }
     else{
-      echo "<script>alert('Select a time or date in the future!');</script>";
+      $alert_msg = "Please select a time or date in the future!";
+      $alert_type = "warning";
     }
   }
   else{
-    echo "<script>alert('Select a time or date in the future!');</script>";
+    $alert_msg = "Please select a time or date in the future!";
+    $alert_type = "warning";
   }
 }
 
@@ -64,7 +72,8 @@ if(isset($_GET['cancel']))
   $query=mysqli_query($con,"update appointmenttb set userStatus='0' where ID = '".$_GET['ID']."'");
   if($query)
   {
-    echo "<script>alert('Your appointment successfully cancelled');</script>";
+    $alert_msg = "Your appointment was successfully cancelled!";
+    $alert_type = "info";
   }
 }
 ?>
@@ -185,6 +194,17 @@ if(isset($_GET['cancel']))
         </ul>
       </div>
     </nav>
+
+    <?php if(!empty($alert_msg)): ?>
+    <div class="container mt-3">
+      <div class="alert alert-<?php echo $alert_type; ?> alert-dismissible fade show shadow-sm" role="alert" style="border-radius: 12px; font-weight: 500;">
+        <i class="fa fa-info-circle mr-2"></i> <?php echo $alert_msg; ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+    <?php endif; ?>
 
     <div class="container-fluid" style="margin-top:20px;">
       <div class="row mb-3">

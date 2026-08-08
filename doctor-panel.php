@@ -3,12 +3,16 @@ require_once(__DIR__ . '/db.php');
 include('func1.php');
 $doctor = isset($_SESSION['dname']) ? $_SESSION['dname'] : 'Dr. Krishnamoorthy BS';
 
+$alert_msg = '';
+$alert_type = 'info';
+
 if(isset($_GET['cancel']))
 {
   $query=mysqli_query($con,"update appointmenttb set doctorStatus='0' where ID = '".$_GET['ID']."'");
   if($query)
   {
-    echo "<script>alert('Appointment successfully cancelled');</script>";
+    $alert_msg = "Appointment successfully cancelled.";
+    $alert_type = "info";
   }
 }
 ?>
@@ -100,6 +104,17 @@ if(isset($_GET['cancel']))
         </form>
       </div>
     </nav>
+
+    <?php if(!empty($alert_msg)): ?>
+    <div class="container mt-3">
+      <div class="alert alert-<?php echo $alert_type; ?> alert-dismissible fade show shadow-sm" role="alert" style="border-radius: 12px; font-weight: 500;">
+        <i class="fa fa-info-circle mr-2"></i> <?php echo $alert_msg; ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+    <?php endif; ?>
 
     <div class="container-fluid" style="margin-top:20px;">
       <div class="row mb-3">

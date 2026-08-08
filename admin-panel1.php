@@ -2,6 +2,9 @@
 require_once(__DIR__ . '/db.php');
 include('newfunc.php');
 
+$alert_msg = '';
+$alert_type = 'info';
+
 if(isset($_POST['docsub']))
 {
   $doctor=$_POST['doctor'];
@@ -13,7 +16,8 @@ if(isset($_POST['docsub']))
   $result=mysqli_query($con,$query);
   if($result)
     {
-      echo "<script>alert('Doctor added successfully!');</script>";
+      $alert_msg = "Doctor added successfully!";
+      $alert_type = "success";
   }
 }
 
@@ -24,10 +28,12 @@ if(isset($_POST['docsub1']))
   $result=mysqli_query($con,$query);
   if($result)
     {
-      echo "<script>alert('Doctor removed successfully!');</script>";
+      $alert_msg = "Doctor removed successfully!";
+      $alert_type = "info";
   }
   else{
-    echo "<script>alert('Unable to delete!');</script>";
+    $alert_msg = "Unable to delete doctor. Please verify the email!";
+    $alert_type = "warning";
   }
 }
 ?>
