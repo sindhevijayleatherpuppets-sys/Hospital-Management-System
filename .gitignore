@@ -1,0 +1,48 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Environment and Secret Files
+.env
+.env.*
+!.env.example
+config.local.php
+*.pem
+*.key
+*.p12
+*.crt
+
+# IDE and Editor Files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# Agent / AI Tool Directories
+.skills/
+.agents/
+.gemini/
+
+# PHP / Composer / Dependencies
+# Uncomment vendor/ if managing packages via Composer install
+# /vendor/
+composer.phar
+*.log
+
+# Sass / Build Cache
+.sass-cache/
+.bsp/
+
+# Temp & Backup Files
+*.tmp
+*.bak
+*.swp
